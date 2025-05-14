@@ -7,7 +7,7 @@ screen = pygame.display.set_mode([screen_width, screen_height])
 pygame.mouse.set_visible(False)
 
 pygame.display.set_caption("Полет самолета")
-
+BACKGROUND = (255, 255, 255)
 background_image = pygame.image.load('sky.jpg').convert()
 plane_image = pygame.image.load('plane.png').convert()
 plane_image = pygame.transform.flip(plane_image, True, False)
@@ -40,9 +40,10 @@ while running:
         plane_rect.x += 5
     if keys[pygame.K_UP] and plane_rect.top > 5:
         plane_rect.y -= 5
-    if keys[pygame.K_DOWN] and plane_rect.botto < screen_height - 5:
+    if keys[pygame.K_DOWN] and plane_rect.bottom < screen_height - 5:
         plane_rect.y += 5
 
+    screen.fill(BACKGROUND)  # очистка экрана
     screen.blit(plane_image, plane_rect)
     screen.blit(plane2_image, plane2_rect)
 
